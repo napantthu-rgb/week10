@@ -179,9 +179,13 @@
 
       <!-- QUICK FILTERS -->
       <div class="flex flex-wrap justify-center gap-3 mt-6">
-        {['Toyota', 'Honda', 'Isuzu', 'Ford', 'Mazda', 'BMW', 'Mercedes'].map(b => `
-        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">${b}</button>
-        `).join('')}
+        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">Toyota</button>
+        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">Honda</button>
+        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">Isuzu</button>
+        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">Ford</button>
+        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">Mazda</button>
+        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">BMW</button>
+        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">Mercedes</button>
       </div>
 
       <!-- STATS -->
@@ -206,20 +210,27 @@
   <section class="py-12 px-6 bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto">
       <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-        {[
-          {icon:'🚙', label:'รถ SUV'},
-          {icon:'🚗', label:'รถเก๋ง'},
-          {icon:'🚐', label:'รถตู้'},
-          {icon:'🛻', label:'รถกระบะ'},
-          {icon:'🏎️', label:'รถสปอร์ต'},
-          {icon:'🚕', label:'รถแท็กซี่'},
-          {icon:'⚡', label:'EV/ไฟฟ้า'},
-        ].map(c => `
-          <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-brand-red hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-brand-red group">
-            <span class="text-3xl group-hover:scale-110 transition-transform">${c.icon}</span>
-            <span class="whitespace-nowrap font-semibold">${c.label}</span>
-          </button>
-        `).join('')}
+        <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-red-500 hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-red-500">
+          <span class="text-3xl">🚙</span><span class="whitespace-nowrap font-semibold">รถ SUV</span>
+        </button>
+        <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-red-500 hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-red-500">
+          <span class="text-3xl">🚗</span><span class="whitespace-nowrap font-semibold">รถเก๋ง</span>
+        </button>
+        <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-red-500 hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-red-500">
+          <span class="text-3xl">🚐</span><span class="whitespace-nowrap font-semibold">รถตู้</span>
+        </button>
+        <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-red-500 hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-red-500">
+          <span class="text-3xl">🛻</span><span class="whitespace-nowrap font-semibold">รถกระบะ</span>
+        </button>
+        <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-red-500 hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-red-500">
+          <span class="text-3xl">🏎️</span><span class="whitespace-nowrap font-semibold">รถสปอร์ต</span>
+        </button>
+        <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-red-500 hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-red-500">
+          <span class="text-3xl">🚕</span><span class="whitespace-nowrap font-semibold">รถแท็กซี่</span>
+        </button>
+        <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-red-500 hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-red-500">
+          <span class="text-3xl">⚡</span><span class="whitespace-nowrap font-semibold">EV/ไฟฟ้า</span>
+        </button>
       </div>
     </div>
   </section>
