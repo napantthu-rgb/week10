@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SPUKKCAR – รถมือสองคุณภาพดี</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Kanit:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            kanit: ['Kanit', 'sans-serif'],
+            sarabun: ['Sarabun', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#E31C25',
+              dark: '#B5141C',
+              light: '#FF3B44',
+            }
+          },
+          animation: {
+            'float': 'float 3s ease-in-out infinite',
+            'slide-up': 'slideUp 0.6s ease-out forwards',
+            'fade-in': 'fadeIn 0.8s ease-out forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            slideUp: {
+              from: { opacity: '0', transform: 'translateY(30px)' },
+              to: { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              from: { opacity: '0' },
+              to: { opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Sarabun', sans-serif; }
+    .hero-bg {
+      background: linear-gradient(135deg, #E31C25 0%, #B5141C 50%, #8B0E14 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      pointer-events: none;
+    }
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(227,28,37,0.15);
+    }
+    .search-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(227,28,37,0.2);
+    }
+    .badge-new {
+      background: linear-gradient(135deg, #E31C25, #FF3B44);
+    }
+    .nav-shadow {
+      box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+    }
+    .price-tag {
+      background: linear-gradient(135deg, #E31C25 0%, #B5141C 100%);
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .footer-cta {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+    .shimmer {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .car-emoji { animation: float 3s ease-in-out infinite; display: inline-block; }
+    select { appearance: none; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- NAVBAR -->
+  <nav class="bg-white nav-shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="text-2xl car-emoji">🚗</span>
+        <span class="font-kanit font-black text-2xl tracking-tight">
+          SPUKK<span class="text-brand-red">CAR</span>
+        </span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 font-sarabun text-sm font-600 text-gray-600">
+        <a href="#" class="hover:text-brand-red transition-colors">รถทั้งหมด</a>
+        <a href="#" class="hover:text-brand-red transition-colors">ยี่ห้อรถ</a>
+        <a href="#" class="hover:text-brand-red transition-colors">ราคา</a>
+        <a href="#" class="hover:text-brand-red transition-colors">บทความ</a>
+      </div>
+      <a href="#" class="bg-brand-red hover:bg-brand-dark text-white font-kanit font-semibold px-5 py-2.5 rounded-xl text-sm transition-all duration-200 hover:shadow-lg hover:shadow-red-200 flex items-center gap-2">
+        <span>+</span> ลงขายรถ
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-bg py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 bg-white/10 text-white text-sm font-sarabun px-4 py-2 rounded-full mb-6 backdrop-blur-sm border border-white/20">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          มีรถใหม่เข้าทุกวัน
+        </div>
+        <h1 class="font-kanit font-black text-white text-5xl md:text-6xl leading-tight mb-4">
+          ค้นหารถมือสอง<br/>
+          <span class="text-yellow-300">ที่ใช่สำหรับคุณ</span>
+        </h1>
+        <p class="text-white/70 font-sarabun text-lg mt-4">รถมือสองคุณภาพดี ราคาดีที่สุด คัดมาแล้วกว่า 10,000 คัน</p>
+      </div>
+
+      <!-- SEARCH BOX -->
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-3 flex flex-col md:flex-row gap-3">
+        <div class="flex-1 relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+          <input
+            type="text"
+            placeholder="ค้นหายี่ห้อ รุ่น เช่น Toyota Camry..."
+            class="search-input w-full pl-11 pr-4 py-3.5 rounded-xl bg-gray-50 text-gray-800 placeholder-gray-400 font-sarabun text-sm border border-transparent focus:border-brand-red transition-all"
+          />
+        </div>
+        <div class="relative min-w-[160px]">
+          <select class="w-full bg-gray-50 border border-transparent text-gray-700 font-sarabun text-sm pl-4 pr-8 py-3.5 rounded-xl focus:border-brand-red focus:outline-none appearance-none cursor-pointer">
+            <option>ราคาทั้งหมด</option>
+            <option>ต่ำกว่า 200,000 บาท</option>
+            <option>200,000 – 500,000 บาท</option>
+            <option>500,000 – 1,000,000 บาท</option>
+            <option>มากกว่า 1,000,000 บาท</option>
+          </select>
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▾</span>
+        </div>
+        <button class="bg-brand-red hover:bg-brand-dark text-white font-kanit font-bold px-8 py-3.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-red-400/30 whitespace-nowrap">
+          ค้นหา
+        </button>
+      </div>
+
+      <!-- QUICK FILTERS -->
+      <div class="flex flex-wrap justify-center gap-3 mt-6">
+        {['Toyota', 'Honda', 'Isuzu', 'Ford', 'Mazda', 'BMW', 'Mercedes'].map(b => `
+        <button class="bg-white/15 hover:bg-white/25 text-white font-sarabun text-sm px-4 py-2 rounded-full border border-white/20 transition-all backdrop-blur-sm">${b}</button>
+        `).join('')}
+      </div>
+
+      <!-- STATS -->
+      <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-12">
+        <div class="stat-card rounded-xl p-4 text-center text-white">
+          <div class="font-kanit font-black text-2xl">10K+</div>
+          <div class="font-sarabun text-xs text-white/60 mt-1">รถในระบบ</div>
+        </div>
+        <div class="stat-card rounded-xl p-4 text-center text-white">
+          <div class="font-kanit font-black text-2xl">50K+</div>
+          <div class="font-sarabun text-xs text-white/60 mt-1">ผู้ใช้งาน</div>
+        </div>
+        <div class="stat-card rounded-xl p-4 text-center text-white">
+          <div class="font-kanit font-black text-2xl">4.9★</div>
+          <div class="font-sarabun text-xs text-white/60 mt-1">คะแนนรีวิว</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="py-12 px-6 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+        {[
+          {icon:'🚙', label:'รถ SUV'},
+          {icon:'🚗', label:'รถเก๋ง'},
+          {icon:'🚐', label:'รถตู้'},
+          {icon:'🛻', label:'รถกระบะ'},
+          {icon:'🏎️', label:'รถสปอร์ต'},
+          {icon:'🚕', label:'รถแท็กซี่'},
+          {icon:'⚡', label:'EV/ไฟฟ้า'},
+        ].map(c => `
+          <button class="flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 border-gray-100 hover:border-brand-red hover:bg-red-50 transition-all font-sarabun text-sm text-gray-600 hover:text-brand-red group">
+            <span class="text-3xl group-hover:scale-110 transition-transform">${c.icon}</span>
+            <span class="whitespace-nowrap font-semibold">${c.label}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST CARS -->
+  <section class="py-14 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🚘</span>
+          <h2 class="font-kanit font-bold text-2xl text-gray-900">รถลงใหม่ล่าสุด</h2>
+        </div>
+        <a href="#" class="text-brand-red font-sarabun font-semibold text-sm hover:underline flex items-center gap-1">
+          ดูทั้งหมด →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Car Cards -->
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+          <div class="relative">
+            <div class="h-44 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-6xl">🚗</div>
+            <span class="badge-new absolute top-3 left-3 text-white text-xs font-kanit font-semibold px-2.5 py-1 rounded-full">ใหม่</span>
+            <button class="absolute top-3 right-3 bg-white/80 backdrop-blur-sm w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm">♡</button>
+          </div>
+          <div class="p-4">
+            <div class="text-xs font-sarabun text-gray-400 mb-1">2020 • 45,000 กม.</div>
+            <h3 class="font-kanit font-bold text-gray-900 mb-2">Toyota Camry 2.5 HV</h3>
+            <div class="flex items-center justify-between">
+              <span class="font-kanit font-black text-brand-red text-xl">฿890,000</span>
+              <span class="text-xs font-sarabun text-gray-400 bg-gray-100 px-2 py-1 rounded-full">กรุงเทพฯ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+          <div class="relative">
+            <div class="h-44 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center text-6xl">🚙</div>
+            <span class="badge-new absolute top-3 left-3 text-white text-xs font-kanit font-semibold px-2.5 py-1 rounded-full">ใหม่</span>
+            <button class="absolute top-3 right-3 bg-white/80 backdrop-blur-sm w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm">♡</button>
+          </div>
+          <div class="p-4">
+            <div class="text-xs font-sarabun text-gray-400 mb-1">2022 • 28,000 กม.</div>
+            <h3 class="font-kanit font-bold text-gray-900 mb-2">Honda CR-V 2.4 EL</h3>
+            <div class="flex items-center justify-between">
+              <span class="font-kanit font-black text-brand-red text-xl">฿1,190,000</span>
+              <span class="text-xs font-sarabun text-gray-400 bg-gray-100 px-2 py-1 rounded-full">เชียงใหม่</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+          <div class="relative">
+            <div class="h-44 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-6xl">🛻</div>
+            <button class="absolute top-3 right-3 bg-white/80 backdrop-blur-sm w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm">♡</button>
+          </div>
+          <div class="p-4">
+            <div class="text-xs font-sarabun text-gray-400 mb-1">2021 • 62,000 กม.</div>
+            <h3 class="font-kanit font-bold text-gray-900 mb-2">Ford Ranger Wildtrak</h3>
+            <div class="flex items-center justify-between">
+              <span class="font-kanit font-black text-brand-red text-xl">฿730,000</span>
+              <span class="text-xs font-sarabun text-gray-400 bg-gray-100 px-2 py-1 rounded-full">ขอนแก่น</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+          <div class="relative">
+            <div class="h-44 bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center text-6xl">🏎️</div>
+            <span class="absolute top-3 left-3 bg-yellow-400 text-yellow-900 text-xs font-kanit font-semibold px-2.5 py-1 rounded-full">ลดราคา</span>
+            <button class="absolute top-3 right-3 bg-white/80 backdrop-blur-sm w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm">♡</button>
+          </div>
+          <div class="p-4">
+            <div class="text-xs font-sarabun text-gray-400 mb-1">2019 • 38,000 กม.</div>
+            <h3 class="font-kanit font-bold text-gray-900 mb-2">BMW 320i M-Sport</h3>
+            <div class="flex items-center justify-between">
+              <span class="font-kanit font-black text-brand-red text-xl">฿1,450,000</span>
+              <span class="text-xs font-sarabun text-gray-400 bg-gray-100 px-2 py-1 rounded-full">กรุงเทพฯ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL CARS SECTION -->
+  <section class="py-14 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="font-kanit font-bold text-2xl text-gray-900">รถมือสองทั้งหมด</h2>
+          <p class="text-gray-400 font-sarabun text-sm mt-1">พบรถกว่า 10,234 คัน</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="text-sm font-sarabun px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:border-brand-red hover:text-brand-red transition-all">
+            🔽 กรอง
+          </button>
+          <button class="text-sm font-sarabun px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:border-brand-red hover:text-brand-red transition-all">
+            ↕ เรียง
+          </button>
+        </div>
+      </div>
+
+      <!-- List view cars -->
+      <div class="space-y-4">
+        <div class="card-hover flex gap-4 bg-gray-50 hover:bg-white rounded-2xl p-4 border border-gray-100 cursor-pointer">
+          <div class="w-32 h-24 flex-shrink-0 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center text-4xl">🚗</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-kanit font-bold text-gray-900">Mazda CX-5 2.0 C</h3>
+                <div class="flex flex-wrap gap-2 mt-1.5">
+                  <span class="text-xs font-sarabun text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">ปี 2023</span>
+                  <span class="text-xs font-sarabun text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">15,000 กม.</span>
+                  <span class="text-xs font-sarabun text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">เกียร์ Auto</span>
+                </div>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <div class="font-kanit font-black text-brand-red text-xl">฿1,080,000</div>
+                <div class="text-xs text-gray-400 font-sarabun">กรุงเทพฯ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-hover flex gap-4 bg-gray-50 hover:bg-white rounded-2xl p-4 border border-gray-100 cursor-pointer">
+          <div class="w-32 h-24 flex-shrink-0 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-xl flex items-center justify-center text-4xl">🚙</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-kanit font-bold text-gray-900">Isuzu D-Max 1.9 S</h3>
+                <div class="flex flex-wrap gap-2 mt-1.5">
+                  <span class="text-xs font-sarabun text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">ปี 2022</span>
+                  <span class="text-xs font-sarabun text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">42,000 กม.</span>
+                  <span class="text-xs font-sarabun text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">เกียร์ Auto</span>
+                </div>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <div class="font-kanit font-black text-brand-red text-xl">฿620,000</div>
+                <div class="text-xs text-gray-400 font-sarabun">เชียงราย</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-hover flex gap-4 bg-gray-50 hover:bg-white rounded-2xl p-4 border border-gray-100 cursor-pointer">
+          <div class="w-32 h-24 flex-shrink-0 bg-gradient-to-br from-green-100 to-emerald-200 rounded-xl flex items-center justify-center text-4xl">⚡</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-kanit font-bold text-gray-900">BYD Atto 3 Extended</h3>
+                <div class="flex flex-wrap gap-2 mt-1.5">
+                  <span class="text-xs font-sarabun text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">ปี 2023</span>
+                  <span class="text-xs font-sarabun text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">8,000 กม.</span>
+                  <span class="text-xs font-sarabun text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">EV ⚡</span>
+                </div>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <div class="font-kanit font-black text-brand-red text-xl">฿1,290,000</div>
+                <div class="text-xs text-gray-400 font-sarabun">กรุงเทพฯ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <button class="border-2 border-brand-red text-brand-red hover:bg-brand-red hover:text-white font-kanit font-bold px-8 py-3 rounded-xl transition-all duration-200">
+          โหลดรถเพิ่มเติม
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="font-kanit font-bold text-2xl text-gray-900 mb-2">ทำไมต้อง SPUKKCAR?</h2>
+      <p class="text-gray-500 font-sarabun text-sm mb-10">เราคัดสรรรถมือสองคุณภาพดีให้คุณ</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">✅</div>
+          <h3 class="font-kanit font-bold text-gray-900 mb-2">รถผ่านการตรวจสอบ</h3>
+          <p class="font-sarabun text-sm text-gray-500">ทุกคันผ่านการตรวจสอบมาตรฐาน 100+ จุด เพื่อความมั่นใจ</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">💰</div>
+          <h3 class="font-kanit font-bold text-gray-900 mb-2">ราคาดีที่สุด</h3>
+          <p class="font-sarabun text-sm text-gray-500">เปรียบเทียบราคาได้ทันที ไม่มีค่าธรรมเนียมแอบแฝง</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">🔒</div>
+          <h3 class="font-kanit font-bold text-gray-900 mb-2">ซื้อขายปลอดภัย</h3>
+          <p class="font-sarabun text-sm text-gray-500">ระบบความปลอดภัยมาตรฐานสูง ดูแลทุกขั้นตอนการซื้อขาย</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="footer-cta py-20 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="text-5xl mb-6 car-emoji">🚗</div>
+      <h2 class="font-kanit font-black text-white text-4xl mb-4">ขายรถของคุณฟรี!</h2>
+      <p class="text-white/60 font-sarabun mb-8">ลงประกาศขายรถง่าย ๆ ใน 1 นาที ฟรี! ไม่มีค่าใช้จ่าย</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="bg-brand-red hover:bg-brand-light text-white font-kanit font-bold px-10 py-4 rounded-2xl text-lg transition-all duration-200 hover:shadow-xl hover:shadow-red-500/30 hover:-translate-y-0.5">
+          + ลงขายรถ ฟรี!
+        </a>
+        <a href="#" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-kanit font-semibold px-10 py-4 rounded-2xl text-lg transition-all duration-200 backdrop-blur-sm">
+          ดูรถทั้งหมด
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 py-8 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🚗</span>
+        <span class="font-kanit font-black text-white text-lg">SPUKK<span class="text-brand-red">CAR</span></span>
+      </div>
+      <div class="font-sarabun text-sm text-center">
+        © 2025 SPUKKCAR. All rights reserved.
+      </div>
+      <div class="flex gap-6 font-sarabun text-sm">
+        <a href="#" class="hover:text-white transition-colors">นโยบายความเป็นส่วนตัว</a>
+        <a href="#" class="hover:text-white transition-colors">ติดต่อเรา</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Quick filter buttons
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (this.parentElement.tagName === 'DIV' && this.parentElement.classList.contains('flex-wrap')) {
+          document.querySelectorAll('.flex-wrap button').forEach(b => {
+            b.classList.remove('bg-white/40');
+          });
+          this.classList.add('bg-white/40');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
